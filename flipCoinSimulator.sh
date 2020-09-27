@@ -32,3 +32,29 @@ do
 done
 echo "Times Heads Won : "$timesHeadsAppeared;
 echo "Times Tails Won : "$timesTailsAppeared;
+
+#3#
+MAXIMUM_POINT=21;
+timesHeadsGotGenerated=0;
+timesTailsGotGenearted=0;
+while [[ $timesHeadsGotGenerated -lt MAXIMUM_POINT && $timesTailsGotGenerated -lt MAXIMUM_POINT ]]
+do
+	value=$( generateRandomValue $((RANDOM%2)) );
+	if [ $value == 1 ]
+	then
+		timesHeadsGotGenerated=$((timesHeadsGotGenerated+1));
+	else
+		timesTailsGotGenerated=$((timesTailsGotGenerated+1));
+	fi
+done
+
+if [ $timesHeadsGotGenerated -gt $timesTailsGotGenerated ]
+then 
+	headsWonByPoints=$((timesHeadsGotGenerated-timesTailsGotGenerated));
+	echo "Heads Won By "$headsWonByPoints" points !";
+else
+	tailsWonByPoints=$((timesTailsGotGenerated-timesHeadsGotGenerated));
+	echo "Tails Won By "$tailsWonByPoints" points !";
+fi
+
+
