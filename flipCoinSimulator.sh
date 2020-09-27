@@ -58,3 +58,25 @@ else
 fi
 
 
+#4#
+if [ $timesHeadsGotGenerated -eq $timesTailsGotGenerated ]
+then
+	echo "ITS a Tie !!!";
+	difference=0;
+	while [ $difference -lt 3 ]
+	do
+			val=$( generateRandomValue $((RANDOM%2)) );
+			if [ $val == 1 ]
+			then
+				heads=$((heads+1));
+			else
+				tails=$((tails+1));
+			fi
+	    if [ $heads -gt $tails ]
+	    then
+		difference=$((heads-tails));
+            else
+		difference=$((tails-heads));
+	    fi
+	done
+fi
